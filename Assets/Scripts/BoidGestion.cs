@@ -25,7 +25,7 @@ public class BoidGestion : MonoBehaviour
     {
         for(int z = 0; z < 10; z++)
         {
-            GenOneZombie();
+           GenOneZombie();
         }
     }
 
@@ -40,7 +40,7 @@ public class BoidGestion : MonoBehaviour
         }*/
 
         //Boucle principale
-        foreach (GameObject boid in totalBoidsZombie)
+       /* foreach (GameObject boid in totalBoidsZombie)
         {
             List<GameObject> closeBoids = new List<GameObject>();
             foreach (GameObject otherboid in totalBoidsZombie)
@@ -58,17 +58,16 @@ public class BoidGestion : MonoBehaviour
             
            // if(boid.transform.position.x < 9 )
             boid.GetComponent<ZombieBoid>().move();
-        }
+        }*/
     }
 
     //Fonction qui généra un zombie à un endroit aléatoire
     void GenOneZombie()
     {
         float posX = Random.Range(-9, 9);
-        float posZ = Random.Range(-15, -5);
+        float posZ = Random.Range(5, 15);
 
         GameObject newZombie = Instantiate(ZombieBoidPrefab, new Vector3(posX, 0.5f, posZ), Quaternion.identity);
-        newZombie.transform.rotation = new Quaternion(0, 180, 0, 0) ;
         newZombie.transform.parent = transform;
         totalBoidsZombie.Add(newZombie);
     }
