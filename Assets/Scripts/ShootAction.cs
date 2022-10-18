@@ -25,7 +25,7 @@ public class ShootAction : MonoBehaviour
     //Détermine sur quel Layer on peut tirer
     public LayerMask layerMask;
 
-
+    bool shoot = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +41,17 @@ public class ShootAction : MonoBehaviour
         // Vérifie si le joueur a pressé le bouton pour faire feu (ex:bouton gauche souris)
         // Time.time > nextFire : vérifie si suffisament de temps s'est écoulé pour pouvoir tirer à nouveau
         //GetButtonDown to only clic
-        if (Input.GetButton("Fire1") && Time.time > nextFire)
+        if (transform.parent.parent.GetComponent<PlayerFPS>().etat == "Pistolet")
+        {
+            if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+                shoot = true;
+        }
+        else if (transform.parent.parent.GetComponent<PlayerFPS>().etat == "Fusil")
+        {
+            if (Input.GetButton("Fire1") && Time.time > nextFire)
+                shoot = true;
+        }
+        if(shoot)
         {
             //Nouveau tir
             Debug.Log("Shot");
@@ -78,6 +88,7 @@ public class ShootAction : MonoBehaviour
                     }
                 }
             }
+        shoot = false;
         }
     }
 }

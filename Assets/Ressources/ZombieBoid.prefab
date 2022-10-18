@@ -1268,6 +1268,7 @@ GameObject:
   - component: {fileID: 3544284094564275445}
   - component: {fileID: 3544284094564275444}
   - component: {fileID: 3544284094564275443}
+  - component: {fileID: -8853208057510405712}
   m_Layer: 8
   m_Name: ZombieBoid
   m_TagString: Untagged
@@ -1371,6 +1372,19 @@ MonoBehaviour:
   hitPoint: 0
   isInvulnerable: 0
   invulnerabiltyTime: 0
+--- !u!114 &-8853208057510405712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544284094564275447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d82664e320c4a84fbebd31d9493d6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &3680518588793379301
 GameObject:
   m_ObjectHideFlags: 0
