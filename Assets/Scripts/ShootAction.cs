@@ -17,7 +17,7 @@ public class ShootAction : MonoBehaviour
     private Camera fpsCam;
 
     //Temps entre chaque tir (en secondes) 
-    public float fireRate = 0.25f;
+    public float fireRate = 0.10f;
 
     //Float : mémorise le temps du prochain tir possible
     private float nextFire;
@@ -40,9 +40,11 @@ public class ShootAction : MonoBehaviour
     {
         // Vérifie si le joueur a pressé le bouton pour faire feu (ex:bouton gauche souris)
         // Time.time > nextFire : vérifie si suffisament de temps s'est écoulé pour pouvoir tirer à nouveau
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        //GetButtonDown to only clic
+        if (Input.GetButton("Fire1") && Time.time > nextFire)
         {
             //Nouveau tir
+            Debug.Log("Shot");
 
             //Met à jour le temps pour le prochain tir
             //Time.time = Temps écoulé depuis le lancement du jeu
