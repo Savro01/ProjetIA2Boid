@@ -2,12 +2,12 @@
 
 TODO : 
 
-Création des boids zombie (Pas de limite de déplacement)
-Restriction des boids zombie pour rester dans le tunnel (l'agrandir ?)
+Création des boids zombie dans le cercle + assez loin du joueur  
+Deplacement zombie quand joueur trop loin unifié (random dans Spawner)
 Gérer le champ de vision des zombies
 
-Gérer la machine a état du joueur 
-Gérer la machine a état du zombie
+
+Gérer la machine a état du zombie (Animation, vitesseMax, etc...)
 Gérer la fin du jeu (Défaite/Victoire)
 
 Refactoring fps (balle visible, effet de tir, son, crosshair grossissement, etc...)

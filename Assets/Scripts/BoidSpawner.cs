@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class test : MonoBehaviour
+public class BoidSpawner : MonoBehaviour
 {
     float timer = 0;
 
+    public GameObject target;
+
     public GameObject zombie;
-    int maxZombie = 400;
+    public float radius;
+    int maxZombie = 0;
     // Start is called before the first frame update
     void Start()
     {
-        for(int i = 0; i < 100; i++)
+        for (int i = 0; i < 100; i++)
         {
             genZombie();
         }
@@ -33,11 +36,12 @@ public class test : MonoBehaviour
 
     void genZombie()
     {
-        float x = Random.Range(-9, 9);
-        float y = Random.Range(5, 15);
+        float x = Random.Range(-100, 100);
+        float z = Random.Range(-100, 100);
 
-        Vector3 posZombie = new Vector3(x, 2, y);
-        Instantiate(zombie, posZombie, Quaternion.identity);
-        
+        Vector3 posZombie = new Vector3(x, 1, z);
+        GameObject zombieGO = Instantiate(zombie, posZombie, Quaternion.identity);
+        zombieGO.GetComponent<ZombieBoid>().target = target;
+
     }
 }

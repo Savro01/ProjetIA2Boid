@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-
+using System.Linq;
 
 [RequireComponent(typeof(ZombieBoid))]
-public class BoidCohesion : MonoBehaviour
+public class BoidAlignement : MonoBehaviour
 {
 
     private ZombieBoid boid;
@@ -28,16 +27,16 @@ public class BoidCohesion : MonoBehaviour
         foreach (var boid in boids.Where(b => b != boid))
         {
             var diff = boid.transform.position - transform.position;
-            if(diff.magnitude < radius)
+            if (diff.magnitude < radius)
             {
-                average += diff;
+                average += boid.velocity;
                 found += 1;
             }
         }
-        if(found > 0)
+        if (found > 0)
         {
             average = average / found;
-            boid.velocity += Vector3.Lerp(Vector3.zero, average, average.magnitude / radius);
+            boid.velocity += Vector3.Lerp(boid.velocity, average, Time.deltaTime);
         }
     }
 }
