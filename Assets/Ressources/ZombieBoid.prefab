@@ -1372,8 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2eae9b96d063c449a177761b819ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoint: 5
-  hitPoint: 0
+  hitPoint: 10
   isInvulnerable: 0
   invulnerabiltyTime: 0
 --- !u!114 &-8853208057510405712
@@ -1388,9 +1387,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82664e320c4a84fbebd31d9493d6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 1, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   maxVelocity: 10
   target: {fileID: 0}
+  etat: 0
 --- !u!114 &-1097949508921081459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1403,7 +1403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48f293b2d7193c449d081a898799bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
+  forceCohesion: 2
+  radius: 15
 --- !u!114 &7739580845307627666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1416,6 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e29030bf125e141a0602a27165b81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceAlignement: 40
   radius: 6
 --- !u!114 &-5241812316470672987
 MonoBehaviour:
@@ -1429,8 +1431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a4c72d5220b549a036724688a4da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceRepulsion: 30
   radius: 4
-  repulsionForce: 50
 --- !u!114 &-1214425958263794670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1443,8 +1445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30d520de2cb62b94d85a9482b9d39b30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 200
-  boundaryForce: 0.5
+  radius: 100
+  boundaryForce: 20
 --- !u!1 &3680518588793379301
 GameObject:
   m_ObjectHideFlags: 0

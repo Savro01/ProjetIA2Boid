@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class BoidSpawner : MonoBehaviour
 {
-    float timer = 0;
-
     public GameObject target;
 
     public GameObject zombie;
-    public float radius;
-    int maxZombie = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,25 +19,28 @@ public class BoidSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float time = 0.15f;
-        if (timer <= time)
-            timer += Time.deltaTime;
 
-        if (timer > time && maxZombie > 0)
-        {
-            genZombie();
-            timer = 0;
-        }
     }
 
     void genZombie()
     {
-        float x = Random.Range(-100, 100);
-        float z = Random.Range(-100, 100);
+        Vector2 origin = new Vector2(0, 0);
+        Vector2 posZombieTest = RandomPointInAnnulus(origin, 80, 120);
 
-        Vector3 posZombie = new Vector3(x, 1, z);
+        float x = Random.insideUnitCircle.x * 100;
+        float z = Random.insideUnitCircle.y * 100;
+
+        Vector3 posZombie = new Vector3(posZombieTest.x, 1, posZombieTest.y);
         GameObject zombieGO = Instantiate(zombie, posZombie, Quaternion.identity);
         zombieGO.GetComponent<ZombieBoid>().target = target;
 
+    }
+
+    public Vector2 RandomPointInAnnulus(Vector2 origin, float minRadius, float maxRadius)
+    {
+        var randomDirection = Random.insideUnitCircle.normalized;
+        var randomDistance = Random.Range(minRadius, maxRadius);
+        var point = origin + randomDirection * randomDistance;
+        return point;
     }
 }

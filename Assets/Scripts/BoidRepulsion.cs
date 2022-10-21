@@ -6,12 +6,12 @@ using System.Linq;
 [RequireComponent(typeof(ZombieBoid))]
 public class BoidRepulsion : MonoBehaviour
 {
+    [Range(1, 50)]
+    public float forceRepulsion;
 
     private ZombieBoid boid;
 
     public float radius;
-
-    public float repulsionForce;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,8 @@ public class BoidRepulsion : MonoBehaviour
         if (found > 0)
         {
             average = average / found;
-            boid.velocity -= Vector3.Lerp(Vector3.zero, average, average.magnitude / radius) * repulsionForce;
+            boid.velocity -= Vector3.Lerp(Vector3.zero, average, average.magnitude / radius).normalized * forceRepulsion;
+;
         }
     }
 }

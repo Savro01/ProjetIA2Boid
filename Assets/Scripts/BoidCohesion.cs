@@ -7,6 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(ZombieBoid))]
 public class BoidCohesion : MonoBehaviour
 {
+    [Range(1, 50)]
+    public float forceCohesion;
 
     private ZombieBoid boid;
 
@@ -37,7 +39,7 @@ public class BoidCohesion : MonoBehaviour
         if(found > 0)
         {
             average = average / found;
-            boid.velocity += Vector3.Lerp(Vector3.zero, average, average.magnitude / radius);
+            boid.velocity += Vector3.Lerp(Vector3.zero, average, average.magnitude / radius).normalized * forceCohesion;
         }
     }
 }

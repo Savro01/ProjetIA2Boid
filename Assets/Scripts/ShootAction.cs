@@ -41,21 +41,18 @@ public class ShootAction : MonoBehaviour
         // Vérifie si le joueur a pressé le bouton pour faire feu (ex:bouton gauche souris)
         // Time.time > nextFire : vérifie si suffisament de temps s'est écoulé pour pouvoir tirer à nouveau
         //GetButtonDown to only clic
-        if (transform.parent.parent.GetComponent<PlayerFPS>().etat == "Pistolet")
+        if (transform.parent.parent.GetComponent<PlayerFPS>().etat == PlayerFPS.Etat.Pistolet)
         {
             if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
                 shoot = true;
         }
-        else if (transform.parent.parent.GetComponent<PlayerFPS>().etat == "Fusil")
+        else if (transform.parent.parent.GetComponent<PlayerFPS>().etat == PlayerFPS.Etat.Fusil)
         {
             if (Input.GetButton("Fire1") && Time.time > nextFire)
                 shoot = true;
         }
         if(shoot)
         {
-            //Nouveau tir
-            Debug.Log("Shot");
-
             //Met à jour le temps pour le prochain tir
             //Time.time = Temps écoulé depuis le lancement du jeu
             //temps du prochain tir = temps total écoulé + temps qu'il faut attendre

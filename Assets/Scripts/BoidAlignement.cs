@@ -6,6 +6,8 @@ using System.Linq;
 [RequireComponent(typeof(ZombieBoid))]
 public class BoidAlignement : MonoBehaviour
 {
+    [Range(1, 50)]
+    public float forceAlignement;
 
     private ZombieBoid boid;
 
@@ -36,7 +38,7 @@ public class BoidAlignement : MonoBehaviour
         if (found > 0)
         {
             average = average / found;
-            boid.velocity += Vector3.Lerp(boid.velocity, average, Time.deltaTime);
+            boid.velocity += Vector3.Lerp(boid.velocity, average, Time.deltaTime).normalized * forceAlignement;
         }
     }
 }

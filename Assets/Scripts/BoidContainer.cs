@@ -8,7 +8,8 @@ public class BoidContainer : MonoBehaviour
     private ZombieBoid boid;
 
     public float radius;
-    public float boundaryForce; 
+    [Range(1, 50)]
+    public float boundaryForce;
 
     // Start is called before the first frame update
     void Start()

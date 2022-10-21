@@ -20,25 +20,29 @@ public class PlayerFPS : MonoBehaviour
     public float rotationSpeed = 2.0f;
     public float rotationXLimit = 45.0f;
 
-    public string etat = "Pistolet";
+    public enum Etat { Pistolet, Fusil };
+    public Etat etat;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         characterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+            Cursor.lockState = CursorLockMode.None;
+
         //Mouvement du joueur
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
 
         float speedZ = Input.GetAxis("Vertical");
         float speedX = Input.GetAxis("Horizontal");
-        float speedY = moveDirection.y;
         if (Input.GetKeyDown(KeyCode.F))
         {
             switchGun = true;
@@ -82,23 +86,23 @@ public class PlayerFPS : MonoBehaviour
     {
         switch (etat)
         {
-            case "Pistolet":
+            case Etat.Pistolet:
                 if (switchGun)
                 {
-                    etat = "Fusil";
+                    etat = Etat.Fusil;
                     switchGun = false;
                 }
                 transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
                 transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
                 break;
-            case "Fusil":
+            case Etat.Fusil:
                 if (switchGun)
                 {
-                    etat = "Pistolet";
+                    etat = Etat.Pistolet;
                     switchGun = false;
                 }
                 if (isRunning)
-                    etat = "Pistolet";
+                    etat = Etat.Pistolet;
                 transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
                 break;

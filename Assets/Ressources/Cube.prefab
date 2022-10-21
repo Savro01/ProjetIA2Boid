@@ -114,8 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82664e320c4a84fbebd31d9493d6d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 1, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
   maxVelocity: 5
+  target: {fileID: 0}
 --- !u!114 &-5063182684684962277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e29030bf125e141a0602a27165b81c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceAlignement: 100
   radius: 3
 --- !u!114 &277640474549126555
 MonoBehaviour:
@@ -155,6 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48f293b2d7193c449d081a898799bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceCohesion: 100
   radius: 3
 --- !u!114 &-2628422051969514156
 MonoBehaviour:
@@ -168,5 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9a4c72d5220b549a036724688a4da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceRepulsion: 50
   radius: 1.5
-  repulsionForce: 2

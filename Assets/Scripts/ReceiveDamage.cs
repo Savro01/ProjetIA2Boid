@@ -4,12 +4,8 @@ using UnityEngine;
  
 public class ReceiveDamage : MonoBehaviour
 {
-
-    //Maximum de points de vie
-    public int maxHitPoint = 5;
-
     //Points de vie actuels
-    public int hitPoint = 0;
+    public int hitPoint = 10;
 
     //Après avoir reçu un dégât :
     //La créature est invulnérable quelques instants
@@ -23,9 +19,6 @@ public class ReceiveDamage : MonoBehaviour
 
     private void Start()
     {
-        //Au début : Points de vie actuels = Maximum de points de vie
-        hitPoint = maxHitPoint;
-
         isInvulnerable = false;
     }
 
@@ -59,11 +52,5 @@ public class ReceiveDamage : MonoBehaviour
 
         //Applique les dommages aux points de vies actuels
         hitPoint -= damage;
-
-        //S'il reste des points de vie
-        if (hitPoint < 0)
-        {
-            Destroy(gameObject);
-        }
     }
 }
