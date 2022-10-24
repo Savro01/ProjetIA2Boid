@@ -1275,7 +1275,7 @@ GameObject:
   - component: {fileID: -1214425958263794670}
   m_Layer: 8
   m_Name: ZombieBoid
-  m_TagString: Untagged
+  m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1356,10 +1356,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.3665871
+  m_Height: 2.11
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: -0.01, y: 0.7900001, z: 0.036512733}
 --- !u!114 &3544284094564275443
 MonoBehaviour:
   m_ObjectHideFlags: 0

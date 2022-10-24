@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerFPS : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class PlayerFPS : MonoBehaviour
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * rotationSpeed, 0);
 
-        gestionEtat();
+        //Gestion de l'etat du joueur
+        gestionEtat();       
     }
 
     void gestionEtat()
@@ -106,6 +108,18 @@ public class PlayerFPS : MonoBehaviour
                 transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                 transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
                 break;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Zombie")
+        {
+            GameObject textGO = GameObject.Find("TextFin");
+            textGO.GetComponent<TextMeshProUGUI>().text = "Vous avez perdu, les Zombies vous ont mordus, vous êtes un des leurs désormais...";
+            float x = textGO.transform.parent.transform.position.x;
+            textGO.transform.position = new Vector3(0 + x, textGO.transform.position.y, textGO.transform.position.z);
+            Time.timeScale = 0;
         }
     }
 }
