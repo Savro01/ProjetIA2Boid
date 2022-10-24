@@ -20,10 +20,13 @@ public class ZombieBoid : MonoBehaviour
 
     bool willDie = false;
 
+    Animator animation;
+
     // Start is called before the first frame update
     void Start()
     {
         pv = GetComponent<ReceiveDamage>().hitPoint;
+        animation = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -70,6 +73,8 @@ public class ZombieBoid : MonoBehaviour
         switch (etat)
         {
             case Etat.Cours:
+                animation.SetBool("Cours", true);
+                animation.SetBool("Marche", false);
                 if (!lookPlayer)
                     etat = Etat.Marche;
                 if(pv <= 0)
@@ -79,11 +84,12 @@ public class ZombieBoid : MonoBehaviour
                 }
                 if (pv <= 5)
                     etat = Etat.Marche;
-                maxVelocity = 10;
-                //Play Animation Cours
+                maxVelocity = 10;               
                 break;
             case Etat.Marche:
-                if (lookPlayer)
+                animation.SetBool("Cours", false);
+                animation.SetBool("Marche", true);
+                if (lookPlayer && pv > 5)
                     etat = Etat.Cours;
                 if (pv <= 0)
                 {
@@ -91,11 +97,10 @@ public class ZombieBoid : MonoBehaviour
                     etat = Etat.Mort;
                 }
                 maxVelocity = 2;
-                //Play Animation Marche
                 break;
             case Etat.Mort:
+                animation.SetBool("Mort", true);
                 Invoke("ZombieMort", 2);
-                //Play Animation Dead
                 break;
         }
     }
