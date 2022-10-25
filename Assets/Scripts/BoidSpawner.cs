@@ -9,10 +9,12 @@ public class BoidSpawner : MonoBehaviour
 
     public GameObject zombie;
 
+    int maxZombie = 50;
+
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 50; i++)
         {
             genZombie();
         }
@@ -21,6 +23,11 @@ public class BoidSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(maxZombie > 0)
+        {
+            Invoke("genZombie", 2);
+            maxZombie--;
+        }
         GameObject[] zombieList = GameObject.FindGameObjectsWithTag("Zombie");
         if (zombieList.Length == 0)
         {
@@ -35,12 +42,9 @@ public class BoidSpawner : MonoBehaviour
     void genZombie()
     {
         Vector2 origin = new Vector2(0, 0);
-        Vector2 posZombieTest = RandomPointInAnnulus(origin, 80, 120);
+        Vector2 posZombieAnnulus = RandomPointInAnnulus(origin, 80, 120);
 
-        float x = Random.insideUnitCircle.x * 100;
-        float z = Random.insideUnitCircle.y * 100;
-
-        Vector3 posZombie = new Vector3(posZombieTest.x, 1, posZombieTest.y);
+        Vector3 posZombie = new Vector3(posZombieAnnulus.x, 1, posZombieAnnulus.y);
         GameObject zombieGO = Instantiate(zombie, posZombie, Quaternion.identity);
         zombieGO.transform.parent = transform;
         zombieGO.GetComponent<ZombieBoid>().target = target;

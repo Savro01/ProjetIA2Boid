@@ -53,4 +53,13 @@ public class ReceiveDamage : MonoBehaviour
         //Applique les dommages aux points de vies actuels
         hitPoint -= damage;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "BulletFusil(Clone)" || collision.gameObject.name == "BulletPistolet(Clone)")
+        {
+            GetDamage(1);
+            Destroy(collision.gameObject);
+        }
+    }
 }

@@ -20,7 +20,7 @@ public class ZombieBoid : MonoBehaviour
 
     bool willDie = false;
 
-    Animator animation;
+    new Animator animation;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class ZombieBoid : MonoBehaviour
         if (!willDie)
         {
             //Gestion du Boid
-            if ((target.transform.position - transform.position).magnitude < 50)
+            if ((target.transform.position - transform.position).magnitude < 35)
             {
                 velocity += target.transform.position - transform.position;
                 lookPlayer = true;
@@ -100,11 +100,11 @@ public class ZombieBoid : MonoBehaviour
                 break;
             case Etat.Mort:
                 animation.SetBool("Mort", true);
+                transform.GetComponent<CapsuleCollider>().enabled = false;
                 Invoke("ZombieMort", 2);
                 break;
         }
     }
-
 
     void ZombieMort()
     {
