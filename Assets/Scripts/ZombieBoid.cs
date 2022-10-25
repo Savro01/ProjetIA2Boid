@@ -35,7 +35,7 @@ public class ZombieBoid : MonoBehaviour
         if (!willDie)
         {
             //Gestion du Boid
-            if ((target.transform.position - transform.position).magnitude < 35)
+            if ((target.transform.position - transform.position).magnitude < 40)
             {
                 velocity += target.transform.position - transform.position;
                 lookPlayer = true;

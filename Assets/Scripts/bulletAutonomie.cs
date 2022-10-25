@@ -31,7 +31,7 @@ public class bulletAutonomie : MonoBehaviour
                                               // Create the bullet and give it a velocity according to the target point computed 
 
         Invoke("setVisibleBullet", 0.15f);
-        Invoke("AutoDestruction", 5);
+        Invoke("AutoDestruction", 2);
     }
 
     // Update is called once per frame
@@ -47,6 +47,6 @@ public class bulletAutonomie : MonoBehaviour
 
     void AutoDestruction()
     {
-        Destroy(transform.gameObject);
+        Destroy(this.gameObject);
     }
 }
